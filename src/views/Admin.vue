@@ -1,18 +1,42 @@
 <template>
-  <bk-table />
+  <div class="admin">
+    <BkHeader :title="brandName"/>
+    <bk-dynamic-select :currentTab="currentTab" :tabs="tabs" @value-changed="changesHandler"></bk-dynamic-select>
+  </div>
 </template>
 
 <script>
-import BkTable from '@/components/BkTable.vue';
+import BkDynamicSelect from '@/components/BkDynamicSelect.vue';
+import BkHeader from '@/components/BkHeader.vue';
 
 export default {
   name: 'Admin',
 
-  components: {
-    BkTable,
+  data() {
+    return {
+      currentTab: 'Main',
+      tabs: ['Main', 'PdfLoader', 'Exit'],
+      brandName: 'BRIKEV'
+    }
   },
+
+  components: {
+    BkHeader,
+    BkDynamicSelect
+  },
+
+  methods: {
+    changesHandler(selected) {
+      this.currentTab = selected;
+    }
+  }
+
+
 }
 </script>
 <style scoped>
-
+  .admin {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
