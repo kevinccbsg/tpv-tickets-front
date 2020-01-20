@@ -27,20 +27,20 @@ export default {
 
   components: {
     Main,
-    PdfLoader
+    PdfLoader,
   },
 
   props: {
     tabs: Array,
-    currentTab: String
+    currentTab: String,
   },
 
   methods: {
     selectedTab(value) {
       return this.$emit('value-changed', value);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>

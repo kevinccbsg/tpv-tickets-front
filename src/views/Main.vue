@@ -18,9 +18,9 @@ export default {
 
   components: {
     BkTable,
-    BkButton
-  }
-}
+    BkButton,
+  },
+};
 </script>
 
 <style scoped>

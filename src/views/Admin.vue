@@ -1,7 +1,11 @@
 <template>
   <div class="admin">
     <BkHeader :title="brandName"/>
-    <bk-dynamic-select :currentTab="currentTab" :tabs="tabs" @value-changed="changesHandler"></bk-dynamic-select>
+    <bk-dynamic-select
+      :currentTab="currentTab"
+      :tabs="tabs"
+      @value-changed="changesHandler">
+    </bk-dynamic-select>
   </div>
 </template>
 
@@ -16,23 +20,23 @@ export default {
     return {
       currentTab: 'Main',
       tabs: ['Main', 'PdfLoader', 'Exit'],
-      brandName: 'BRIKEV'
-    }
+      brandName: 'BRIKEV',
+    };
   },
 
   components: {
     BkHeader,
-    BkDynamicSelect
+    BkDynamicSelect,
   },
 
   methods: {
     changesHandler(selected) {
       this.currentTab = selected;
-    }
-  }
+    },
+  },
 
 
-}
+};
 </script>
 <style scoped>
   .admin {

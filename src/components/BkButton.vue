@@ -13,10 +13,10 @@ export default {
   methods: {
     btnClicked() {
       this.$emit('btn-clicked');
-    }
-  }
+    },
+  },
 
-}
+};
 </script>
 
 <style scoped>
@@ -42,4 +42,3 @@ export default {
     background-color: #298d70;
   }
 </style>
-

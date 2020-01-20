@@ -154,8 +154,8 @@
 
 <script>
 export default {
-  name: 'BkTable'
-}
+  name: 'BkTable',
+};
 </script>
 
 <style scoped>

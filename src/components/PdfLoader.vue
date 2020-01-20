@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'PdfLoader',
-}
+};
 </script>
 
 <style scoped>

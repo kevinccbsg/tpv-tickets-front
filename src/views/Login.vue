@@ -35,21 +35,21 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
-    }
+      password: '',
+    };
   },
 
   methods: {
     handleSubmit() {
-      if(this.username !== '' && this.password !== '') {
+      if (this.username !== '' && this.password !== '') {
         this.$emit('onLogin', {
           username: this.username,
-          password: this.password
+          password: this.password,
         });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
