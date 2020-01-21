@@ -8,3 +8,5 @@ export const doLogin = ({ username, password }) => {
     password,
   });
 };
+
+export const getTickets = () => axios.get(`${TPV_APP_API_URL}/tickets`);

@@ -5,13 +5,14 @@
       <input type="text" placeholder="Fecha">
     </div>
     <bk-button><slot>Comprobar</slot></bk-button>
-    <bk-table></bk-table>
+    <bk-table :data="tickets"></bk-table>
   </div>
 </template>
 
 <script>
 import BkTable from '@/components/BkTable.vue';
 import BkButton from '@/components/BkButton.vue';
+import { getTickets } from '@/api';
 
 export default {
   name: 'Main',
@@ -19,6 +20,19 @@ export default {
   components: {
     BkTable,
     BkButton,
+  },
+
+  data() {
+    return {
+      tickets: [],
+    };
+  },
+
+  created() {
+    getTickets()
+      .then(({ data }) => {
+        this.tickets = data;
+      });
   },
 };
 </script>

@@ -8,145 +8,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
-      </tr>
-      <tr>
-        <td>21-12-2019</td>
-        <td>2.10 €</td>
-        <td><input class="checkbox" type="checkbox" value=""></td>
+      <tr v-for="item in data" :key="item.length">
+        <td>{{ item.formattedDate }}</td>
+        <td>{{ item.price }}</td>
+        <td><input v-model="item.validated" class="checkbox" type="checkbox" disabled></td>
       </tr>
     </tbody>
   </table>
@@ -155,6 +20,10 @@
 <script>
 export default {
   name: 'BkTable',
+
+  props: {
+    data: Array,
+  },
 };
 </script>
 
