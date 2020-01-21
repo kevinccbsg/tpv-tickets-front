@@ -1,10 +1,9 @@
-/* eslint-disable import/extensions */
 import Vue from 'vue';
 import Router from 'vue-router';
 import storage from './persistence';
 
-import Admin from '@/views/Admin';
-import Login from '@/views/Login';
+import Admin from '@/views/Admin.vue';
+import Login from '@/views/Login.vue';
 
 Vue.use(Router);
 
