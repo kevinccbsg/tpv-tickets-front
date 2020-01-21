@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import Vue from 'vue';
 import Router from 'vue-router';
+import storage from './persistence';
 
 import Admin from '@/views/Admin';
 import Login from '@/views/Login';
@@ -28,10 +29,12 @@ const router = new Router({
   ],
 });
 
+const { getToken } = storage('cookieStorage');
+
 router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(record => record.meta.public);
   const onlyWhenLoggedOut = to.matched.some(record => record.meta.onlyWhenLoggedOut);
-  const loggedIn = !!undefined;
+  const loggedIn = !!getToken();
 
   if (!isPublic && !loggedIn) {
     return next({
