@@ -1,29 +1,40 @@
 <template>
   <div class="login">
-    <form class="form" @submit.prevent="handleSubmit">
+    <form class="form" @submit.prevent="handleLogin">
       <h1>TPV-APP</h1>
       <div class="input-container">
         <span>Username</span>
         <input
-          v-model="username"
+          data-cy="username"
+          v-model="user.username"
           name="username"
           type="text">
       </div>
       <div class="input-container">
         <span>Password</span>
         <input
+          data-cy="password"
           name="password"
-          v-model="password"
+          v-model="user.password"
           type="password">
       </div>
 
-      <bk-button class="btn" @click="handleSubmit">Login</bk-button>
+      <bk-button
+        data-cy="btn"
+        class="btn"
+        @click="handleLogin">
+          Login
+      </bk-button>
     </form>
   </div>
 </template>
 
 <script>
 import BkButton from '@/components/BkButton.vue';
+import { doLogin } from '@/api';
+import storage from '@/persistence';
+
+const { setItem } = storage('cookieStorage');
 
 export default {
   name: 'Login',
@@ -34,18 +45,22 @@ export default {
 
   data() {
     return {
-      username: '',
-      password: '',
+      user: {
+        username: '',
+        password: '',
+      },
     };
   },
 
   methods: {
-    handleSubmit() {
-      if (this.username !== '' && this.password !== '') {
-        this.$emit('onLogin', {
-          username: this.username,
-          password: this.password,
-        });
+    handleLogin() {
+      if (this.user.username !== '' && this.user.password !== '') {
+        doLogin(this.user)
+          .then(({ data }) => {
+            setItem('session_token', data.jwt);
+            this.$router.push('/');
+          })
+          .catch(() => console.log('error'));
       }
     },
   },
