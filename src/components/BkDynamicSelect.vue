@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style scoped>
+  .dynamic-container {
+    margin-bottom: 100px;
+  }
   .btn-container {
     position: fixed;
     width: 100%;

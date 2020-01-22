@@ -19,6 +19,11 @@ export default {
 
 <style scoped>
   .title {
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    background: #108060;
+    color: #FFF;
   }
 </style>

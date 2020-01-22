@@ -18,6 +18,7 @@ describe('Login view', () => {
   });
 
   it('It should log in by entering a valid username and password', () => {
+    cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
     cy.wait('@loginRequest');

@@ -26,9 +26,26 @@ export default {
   },
 };
 </script>
+<style scoped>
+  table {
+    border: 1px solid #ddd;
+  }
+  table th,
+  table td {
+    padding: 10px;
+  }
+  table thead {
+    background: #108060;
+    color: #FFF;
+  }
+  table tbody tr:nth-child(even){background-color: #f2f2f2;}
+
+  table tbody tr:hover {background-color: #ddd;}
+</style>
 
 <style scoped>
   table {
+    width: 100%;
     margin: 25px 0;
     text-align: center;
     font-size: 1.2rem;
