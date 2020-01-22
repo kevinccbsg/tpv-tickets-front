@@ -1,13 +1,13 @@
 <template>
   <div class="main">
     <div class="input-container">
-      <h2>Valida tu ticket</h2>
-      <input type="text" placeholder="Precio">
-      <input type="text" placeholder="Fecha">
-      <bk-button><slot>Comprobar</slot></bk-button>
+      <h2>{{ $t('ticketForm.title') }}</h2>
+      <input type="text" :placeholder="$t('ticketForm.price')">
+      <input type="text" :placeholder="$t('ticketForm.date')">
+      <bk-button>{{ $t('ticketForm.button') }}</bk-button>
     </div>
     <div class="table-container">
-      <h2>Tickets registrados</h2>
+      <h2>{{ $t('table.title') }}</h2>
       <bk-table :data="tickets"></bk-table>
     </div>
   </div>

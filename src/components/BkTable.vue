@@ -2,9 +2,9 @@
   <table>
     <thead>
       <tr>
-        <th>Fecha</th>
-        <th>Precio</th>
-        <th>Comprobado</th>
+        <th>{{ $t('table.date') }}</th>
+        <th>{{ $t('table.price') }}</th>
+        <th>{{ $t('table.validated') }}</th>
       </tr>
     </thead>
     <tbody>

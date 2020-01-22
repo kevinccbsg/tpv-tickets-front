@@ -1,9 +1,9 @@
 <template>
   <div class="login">
     <form class="form" @submit.prevent="handleLogin">
-      <h1>TPV-APP</h1>
+      <h1>{{ $t('login.titleApp') }}</h1>
       <div class="input-container">
-        <span>Username</span>
+        <span>{{ $t('login.usernameLabel') }}</span>
         <input
           data-cy="username"
           v-model="user.username"
@@ -11,7 +11,7 @@
           type="text">
       </div>
       <div class="input-container">
-        <span>Password</span>
+        <span>{{ $t('login.passwordLabel') }}</span>
         <input
           data-cy="password"
           name="password"
@@ -23,7 +23,7 @@
         data-cy="btn"
         class="btn"
         @click="handleLogin">
-          Login
+          {{ $t('login.button') }}
       </bk-button>
     </form>
   </div>

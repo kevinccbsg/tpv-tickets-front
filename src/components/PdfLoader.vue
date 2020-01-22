@@ -1,9 +1,9 @@
 <template>
   <div class="load-pdf-container">
-    <h1>Añade un pdf con tus movimientos</h1>
+    <h1>{{ $t('pdf.title') }}</h1>
     <form novalidate @submit.prevent="sendFile">
       <div class="pdf-container">
-        <label for="file"><span>Upload File</span></label>
+        <label for="file"><span>{{ $t('pdf.fileInput') }}</span></label>
         <input
           accept="application/pdf"
           name="file"
@@ -18,7 +18,7 @@
         class="btn"
         type="submit"
       >
-          Upload
+          {{ $t('pdf.buton') }}
       </bk-button>
     </form>
   </div>
@@ -40,16 +40,16 @@ export default {
   },
   methods: {
     setFile(evt) {
-      this.pdfFile = evt.target.files[0];
+      const [file] = evt.target.files;
+      this.pdfFile = file;
     },
     sendFile(evt) {
-      console.log(evt.target.checkValidity());
-      console.log(this.pdfFile);
       if (evt.target.checkValidity()) {
         const data = new FormData();
         data.append('file', this.pdfFile);
         return uploadPDF(data);
       }
+      return null;
     },
   },
 };
