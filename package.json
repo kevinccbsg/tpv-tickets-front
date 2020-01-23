@@ -7,11 +7,16 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:cypress": "cd UI-e2e && npm run cy:open",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "axios": "^0.19.1",
+    "compression": "^1.7.4",
     "core-js": "^3.4.4",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
     "js-cookie": "^2.2.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
