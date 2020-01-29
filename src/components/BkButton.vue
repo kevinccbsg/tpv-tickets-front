@@ -21,24 +21,23 @@ export default {
 
 <style scoped>
   .btn {
-    background: #118060;
-    border-radius: 30px;
-    font-size: 12px;
+    background: #1a2446;
+    border-radius: 8px;
     color: #fff;
-    height: 32px;
-    border: none;
+    height: 40px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
+    height: 40px;
+    font-size: 0.9375rem;
     transition: all .15s linear;
+    border: 1px solid #FFF;
   }
   .btn:hover {
-    background: transparent;
-    color: #298d70;
-    border: 2px solid #298d70;
+    background: #3a4878;
     cursor: pointer;
   }
   .btn:active {
-    background-color: #298d70;
+    background-color: #2a3b71;
   }
 </style>

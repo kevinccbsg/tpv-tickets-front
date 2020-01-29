@@ -3,20 +3,22 @@
     <form class="form" @submit.prevent="handleLogin">
       <h1>{{ $t('login.titleApp') }}</h1>
       <div class="input-container">
-        <span>{{ $t('login.usernameLabel') }}</span>
         <input
           data-cy="username"
           v-model="user.username"
           name="username"
+          required
           type="text">
+        <label>{{ $t('login.usernameLabel') }}</label>
       </div>
       <div class="input-container">
-        <span>{{ $t('login.passwordLabel') }}</span>
         <input
           data-cy="password"
           name="password"
           v-model="user.password"
+          required
           type="password">
+        <label>{{ $t('login.passwordLabel') }}</label>
       </div>
 
       <bk-button
@@ -69,33 +71,28 @@ export default {
 
 <style scoped>
   .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    padding: 0 25px;
-    background-image: url('../assets/taxi-bg-min.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background-color: #192346;
+    clip-path: polygon(0 0, 100% 0, 1000% 0%, 100% 100%, 0 85%);
   }
   .form {
-    width: 100%;
+    width: 80%;
     height: 100%;
-    background: none;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    position: relative;
-    transform: translate(-50%, -50%);
   }
   .form h1 {
     color: #FFF;
     text-align: center;
-    margin: 0;
-    padding: 15px;
+    font-size: 2.2rem;
+    padding: 25px 0;
   }
   .input-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     position: relative;
     margin: 30px 0;
   }
@@ -109,13 +106,16 @@ export default {
     height: 50px;
     border-bottom: 2px solid #FFF;
   }
-  .input-container input:focus {
-    border-bottom: 3px solid #118060;
+
+  .input-container input:active ~label,
+  .input-container input:focus ~label,
+  .input-container input:valid ~label {
+    bottom: 50px;
   }
 
-  .input-container span {
+  .input-container label {
     color: #FFF;
-    bottom: 45px;
+    bottom: 12px;
     position: absolute;
     font-size: 1.34rem;
     font-weight: 700;
