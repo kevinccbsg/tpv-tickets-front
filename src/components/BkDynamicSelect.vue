@@ -9,6 +9,7 @@
       <button
         v-for="tab in tabs"
         :key="tab"
+        :data-cy="`${tab}-select`"
         :class="['tab-button', { active: currentTab === tab }]"
         @click="selectedTab(tab)"
       >
