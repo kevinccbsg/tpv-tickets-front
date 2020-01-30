@@ -18,7 +18,7 @@
         class="btn"
         type="submit"
       >
-          {{ $t('pdf.buton') }}
+          {{ $t('pdf.button') }}
       </bk-button>
     </form>
   </div>
