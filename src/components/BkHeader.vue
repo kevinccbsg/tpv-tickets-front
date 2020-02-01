@@ -17,13 +17,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
+
   .title {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 48px;
-    background: #108060;
-    color: #FFF;
+    background: $brand;
+    color: $white;
+    font-family: $base-font-title;
   }
 </style>

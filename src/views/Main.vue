@@ -1,13 +1,13 @@
 <template>
   <div class="main">
     <div class="input-container">
-      <h2>{{ $t('ticketForm.title') }}</h2>
+      <h3>{{ $t('ticketForm.title') }}</h3>
       <input type="text" :placeholder="$t('ticketForm.price')">
       <input type="text" :placeholder="$t('ticketForm.date')">
       <bk-button>{{ $t('ticketForm.button') }}</bk-button>
     </div>
     <div class="table-container">
-      <h2>{{ $t('table.title') }}</h2>
+      <h3>{{ $t('table.title') }}</h3>
       <bk-table :data="tickets"></bk-table>
     </div>
   </div>
@@ -34,28 +34,32 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
   .main {
     display: flex;
     flex-direction: column;
     padding: 0 15px;
+    h3 {
+      text-align: center;
+      font-size: $fs-h3;
+      line-height: $base-line-height;
+    }
   }
   .input-container {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
-  }
-  .input-container > input {
-    margin: 10px 0;
-    height: 25px;
+
+    > input {
+      margin: 10px 0;
+      height: 40px;
+    }
   }
   .table-container {
     margin-top: 20px;
-  }
-  .table-container h2 {
-    text-align: center;
   }
 </style>

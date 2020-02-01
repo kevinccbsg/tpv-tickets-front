@@ -13,7 +13,9 @@
         :class="['tab-button', { active: currentTab === tab }]"
         @click="selectedTab(tab)"
       >
-        {{ tab }}
+        <i class="material-icons">
+          {{ tabsText[tab] }}
+        </i>
       </button>
     </div>
   </div>
@@ -33,6 +35,7 @@ export default {
 
   props: {
     tabs: Array,
+    tabsText: Object,
     currentTab: String,
   },
 
@@ -44,7 +47,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
+
   .dynamic-container {
     margin-bottom: 100px;
   }
@@ -55,24 +60,27 @@ export default {
     height: 60px;
     display: flex;
     font-weight: 700;
-    border-bottom: 1px solid #e0e0e0;
   }
   .tab-button {
     width: 100%;
     padding: 0;
     border: 0;
-    color: #FFF;
+    color: $white;
     cursor: pointer;
-    background: #118060;
-  }
-  .tab-button:hover {
-    background: #118060;
-  }
-  .tab-button.active {
-    background-color: #0d5f48;
+    background-color: $brand;
+    i {
+      font-size: $fs-h2;
+    }
+
+    &:hover {
+      background: lighten($brand, .9);
+    }
+
+    &.active {
+      background-color: lighten($brand, 18%);
+    }
   }
   .tab {
-    /* border: 1px solid #ccc; */
     padding: 10px;
   }
 </style>

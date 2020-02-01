@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <form class="form" @submit.prevent="handleLogin">
-      <h1>{{ $t('login.titleApp') }}</h1>
+      <h2>{{ $t('login.titleApp') }}</h2>
       <div class="input-container">
         <input
           data-cy="username"
@@ -64,25 +64,28 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
+
+  $background-shape: polygon(0 0, 100% 0, 1000% 0%, 100% 100%, 0 65%);
+
   .login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100vh;
-    background-color: #192346;
-    clip-path: polygon(0 0, 100% 0, 1000% 0%, 100% 100%, 0 85%);
+    background-color: $brand;
+    clip-path: $background-shape;
   }
   .form {
     width: 80%;
-    height: 100%;
-  }
-  .form h1 {
-    color: #FFF;
-    text-align: center;
-    font-size: 2.2rem;
-    padding: 25px 0;
+    margin-top: 40%;
+    h2 {
+      color: $white;
+      text-align: center;
+      font-size: $fs-h2;
+      padding: 25px 0;
+    }
   }
   .input-container {
     display: flex;
@@ -90,36 +93,35 @@ export default {
     align-items: flex-start;
     position: relative;
     margin: 30px 0;
-  }
-  .input-container input {
-    color: #FFF;
-    font-size: 0.938rem;
-    border: none;
-    width: 100%;
-    outline: none;
-    background: none;
-    height: 50px;
-    border-bottom: 2px solid #FFF;
-  }
-
-  .input-container input:active ~label,
-  .input-container input:focus ~label,
-  .input-container input:valid ~label {
-    bottom: 50px;
-  }
-
-  .input-container label {
-    color: #FFF;
-    bottom: 12px;
-    position: absolute;
-    font-size: 1.34rem;
-    font-weight: 700;
+    input {
+      color: $white;
+      font-size: $fs-small;
+      border: none;
+      width: 100%;
+      outline: none;
+      background: none;
+      height: 50px;
+      border-bottom: 2px solid $white;
+      &:active ~label,
+      &:focus ~label,
+      &:valid ~label {
+        bottom: 50px;
+      }
+    }
+    label {
+      color: $white;
+      bottom: 12px;
+      position: absolute;
+      font-size: $fs-large;
+      font-weight: 700;
+      transition: all .3s ease;
+    }
   }
   .btn {
     width: 100%;
-  }
-  .btn:hover, .btn:active {
-    color: #FFF;
-    border: 2px solid #FFF;
+    &:hover, &:active {
+      color: $white;
+      border: 2px solid $white;
+    }
   }
 </style>

@@ -4,6 +4,7 @@
     <bk-dynamic-select
       :currentTab="currentTab"
       :tabs="tabs"
+      :tabsText="tabsText"
       @value-changed="changesHandler">
     </bk-dynamic-select>
   </div>
@@ -21,6 +22,11 @@ export default {
     return {
       currentTab: 'Main',
       tabs: ['Main', 'PdfLoader', 'Exit'],
+      tabsText: {
+        Main: 'home',
+        PdfLoader: 'cloud_upload',
+        Exit: 'exit_to_app',
+      },
       brandName: 'BRIKEV',
     };
   },
@@ -38,7 +44,7 @@ export default {
 
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .admin {
     display: flex;
     flex-direction: column;

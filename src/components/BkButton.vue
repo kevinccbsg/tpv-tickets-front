@@ -19,25 +19,27 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
+
   .btn {
-    background: #1a2446;
+    background: $brand;
     border-radius: 8px;
-    color: #fff;
-    height: 40px;
+    color: $white;
+    height: 45px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    height: 40px;
-    font-size: 0.9375rem;
+    height: 45px;
+    font-size: $fs-base;
     transition: all .15s linear;
-    border: 1px solid #FFF;
-  }
-  .btn:hover {
-    background: #3a4878;
-    cursor: pointer;
-  }
-  .btn:active {
-    background-color: #2a3b71;
+    border: 1px solid $white;
+    &:hover {
+      background: lighten($brand, 20%);
+    }
+
+    &:active {
+      background-color: $brand;
+    }
   }
 </style>

@@ -7,7 +7,7 @@ describe('Login view', () => {
   });
 
   it('Login view should have inputs for usarname, password and one button', () => {
-    cy.contains('h1', 'TPV-APP');
+    cy.contains('h2', 'TPV-APP');
     cy.get('[data-cy=btn]').should('be.visible');
   });
 

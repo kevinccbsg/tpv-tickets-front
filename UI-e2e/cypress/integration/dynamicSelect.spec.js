@@ -11,7 +11,7 @@ describe('BkDynamicSelect', () => {
     cy.wait('@getTicketsRequest');
   });
 
-  it('Should render the main screen when the Main tab is clicked', () => {
+  it.only('Should render the main screen when the Main tab is clicked', () => {
     cy.get('[data-cy=Main-select]').click();
     cy.get('.main.content').should('be.visible');
   });

@@ -26,32 +26,40 @@ export default {
   },
 };
 </script>
-<style scoped>
-  table {
-    border: 1px solid #ddd;
-  }
-  table th,
-  table td {
-    padding: 10px;
-  }
-  table thead {
-    background: #108060;
-    color: #FFF;
-  }
-  table tbody tr:nth-child(even){background-color: #f2f2f2;}
-
-  table tbody tr:hover {background-color: #ddd;}
-</style>
-
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/theme/index.scss";
+  $table-odd-row: #ddd;
+  $table-even-row: #f2f2f2;
   table {
     width: 100%;
     margin: 25px 0;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: $fs-large;
+    border: 1px solid $table-odd-row;
+    line-height: $base-line-height;
   }
   .checkbox {
     height: 20px;
     width: 20px;
+  }
+  table {
+    th, td {
+      padding: 10px;
+    }
+
+    thead {
+      background: $brand;
+      color: $white;
+    }
+
+    tbody tr {
+      &:nth-child(even) {
+        background-color: $table-even-row;
+      }
+
+      &:hover {
+        background-color: $table-odd-row;
+      }
+    }
   }
 </style>
