@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:cypress": "cd UI-e2e && npm run cy:open",
+    "test:e2e": "cd UI-e2e && npm run cy:run",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
     "heroku-postbuild": "npm run build"
@@ -35,6 +36,13 @@
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "husky": "^4.2.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test:e2e"
+    }
   }
 }
