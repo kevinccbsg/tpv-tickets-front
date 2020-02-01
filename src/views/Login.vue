@@ -2,25 +2,24 @@
   <div class="login">
     <form class="form" @submit.prevent="handleLogin">
       <h2>{{ $t('login.titleApp') }}</h2>
-      <div class="input-container">
-        <input
-          data-cy="username"
+        <BkInput
+          dataCy="username"
           v-model="user.username"
           name="username"
-          required
-          type="text">
-        <label>{{ $t('login.usernameLabel') }}</label>
-      </div>
-      <div class="input-container">
-        <input
-          data-cy="password"
-          name="password"
+          type="text"
+          :required="true"
+          color="primary"
+          :label="$t('login.usernameLabel')"
+        />
+        <BkInput
+          dataCy="password"
           v-model="user.password"
-          required
-          type="password">
-        <label>{{ $t('login.passwordLabel') }}</label>
-      </div>
-
+          name="password"
+          type="password"
+          :required="true"
+          color="primary"
+          :label="$t('login.passwordLabel')"
+        />
       <bk-button
         data-cy="btn"
         class="btn"
@@ -85,36 +84,6 @@ export default {
       text-align: center;
       font-size: $fs-h2;
       padding: 25px 0;
-    }
-  }
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    margin: 30px 0;
-    input {
-      color: $white;
-      font-size: $fs-small;
-      border: none;
-      width: 100%;
-      outline: none;
-      background: none;
-      height: 50px;
-      border-bottom: 2px solid $white;
-      &:active ~label,
-      &:focus ~label,
-      &:valid ~label {
-        bottom: 50px;
-      }
-    }
-    label {
-      color: $white;
-      bottom: 12px;
-      position: absolute;
-      font-size: $fs-large;
-      font-weight: 700;
-      transition: all .3s ease;
     }
   }
   .btn {
