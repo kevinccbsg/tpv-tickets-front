@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import BkButton from '@/components/BkButton.vue';
 import { doLogin } from '@/api';
 import storage from '@/persistence';
 
@@ -40,10 +39,6 @@ const { setItem } = storage('cookieStorage');
 
 export default {
   name: 'Login',
-
-  components: {
-    BkButton,
-  },
 
   data() {
     return {

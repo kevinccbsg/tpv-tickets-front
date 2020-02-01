@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import '@/components/registerAsGlobal';
 import i18n from '@/lang/i18n';
 import './registerServiceWorker';
 import router from '@/routes';

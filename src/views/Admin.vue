@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import BkDynamicSelect from '@/components/BkDynamicSelect.vue';
-import BkHeader from '@/components/BkHeader.vue';
 import storage from '@/persistence';
 
 const { removeItem } = storage('cookieStorage');
@@ -25,11 +23,6 @@ export default {
       tabs: ['Main', 'PdfLoader', 'Exit'],
       brandName: 'BRIKEV',
     };
-  },
-
-  components: {
-    BkHeader,
-    BkDynamicSelect,
   },
 
   methods: {
