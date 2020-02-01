@@ -67,7 +67,7 @@ export default {
 <style lang="scss" scoped>
   @import "@/theme/index.scss";
 
-  $background-shape: polygon(0 0, 100% 0, 1000% 0%, 100% 100%, 0 65%);
+  $background-shape: polygon(0 0, 100% 0, 1000% 0%, 100% 100%, 0 calculateRem(500px));
 
   .login {
     display: flex;
@@ -79,7 +79,7 @@ export default {
   }
   .form {
     width: 80%;
-    margin-top: 40%;
+    margin-top: calculateRem(100px);
     h2 {
       color: $white;
       text-align: center;
