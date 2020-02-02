@@ -56,6 +56,11 @@ export default {
         color: black;
         border-bottom: 2px solid black;
       }
+      :-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        background-color: transparent;
+      }
     }
     label {
       color: $white;
