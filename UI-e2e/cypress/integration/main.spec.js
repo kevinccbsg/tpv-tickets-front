@@ -23,7 +23,7 @@ describe('Main view', () => {
   });
 
   it('Testing the headers of the table', () => {
-    cy.get('table thead tr').children().should('have.length', 3);
+    cy.get('.tickets-container .table-container > table thead tr').children().should('have.length', 6);
     cy.get('table > thead > tr').within(() => {
       cy.get('th').eq(0).contains('Fecha');
       cy.get('th').eq(1).contains('Precio');

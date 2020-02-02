@@ -1,8 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 
-
 import BkInput from './BkInput.vue';
-
 
 storiesOf('Components/BkInput', module)
   .add('Username example', () => ({

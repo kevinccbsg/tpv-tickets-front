@@ -45,7 +45,21 @@ export default {
       if (evt.target.checkValidity()) {
         const data = new FormData();
         data.append('file', this.pdfFile);
-        return uploadPDF(data);
+        return uploadPDF(data)
+          .then(() => this.$notify({
+            group: 'notify',
+            title: 'Upload success',
+            text: 'Success',
+            duration: 3000,
+            type: 'success',
+          }))
+          .catch(() => this.$notify({
+            group: 'notify',
+            title: 'Upload error',
+            text: 'Error',
+            duration: 3000,
+            type: 'error',
+          }));
       }
       return null;
     },

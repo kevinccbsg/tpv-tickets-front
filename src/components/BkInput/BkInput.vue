@@ -64,6 +64,7 @@ export default {
       font-size: $fs-large;
       font-weight: 700;
       transition: all .3s ease;
+      z-index: -1;
       &.primary {
         color: $white;
       }

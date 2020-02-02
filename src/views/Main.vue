@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="form-container">
+    <form class="form-container" @submit.prevent="send">
       <h3>{{ $t('ticketForm.title') }}</h3>
         <BkInput
           v-model="ticket.date"
@@ -19,16 +19,24 @@
           :label="$t('ticketForm.price')"
         />
       <BkButton>{{ $t('ticketForm.button') }}</BkButton>
-    </div>
-    <div class="table-container">
+    </form>
+    <div class="tickets-container">
       <h3>{{ $t('table.title') }}</h3>
-      <BkTable :data="tickets"></BkTable>
+      <div
+        class="table-container"
+        v-for="(dataTable, index) in ticketsByTitle"
+        :key="dataTable.length">
+          <h4 class="tableTitle">{{ index }}</h4>
+          <BkTable :data="dataTable"></BkTable>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getTickets } from '@/api';
+import groupBy from 'lodash/groupBy';
+import { required } from 'vuelidate/lib/validators';
+import { getTickets, register } from '@/api';
 
 export default {
   name: 'Main',
@@ -48,6 +56,48 @@ export default {
       .then(({ data }) => {
         this.tickets = data;
       });
+  },
+  validations() {
+    return {
+      ticket: {
+        date: {
+          required,
+        },
+        price: {
+          required,
+        },
+      },
+    };
+  },
+  computed: {
+    ticketsByTitle() {
+      return groupBy(this.tickets, 'pdfName');
+    },
+  },
+  methods: {
+    send() {
+      const { date, price } = this.ticket;
+      if (!this.$v.$invalid) {
+        register({
+          date,
+          price,
+        })
+          .then(() => this.$notify({
+            group: 'notify',
+            title: 'Get tickets success',
+            text: 'Success',
+            duration: 3000,
+            type: 'success',
+          }))
+          .catch(() => this.$notify({
+            group: 'notify',
+            title: 'Get tickets error',
+            text: 'Error',
+            duration: 3000,
+            type: 'error',
+          }));
+      }
+    },
   },
 };
 </script>
@@ -72,7 +122,14 @@ export default {
     margin-top: 20px;
     text-align: center;
   }
-  .table-container {
-    margin-top: 20px;
+  .tickets-container {
+    margin-top: calculateRem(20px);
+    .table-container {
+      margin: calculateRem(15px) 0;
+      .tableTitle {
+        font-size: $fs-h4;
+        padding: calculateRem(15px) 0;
+      }
+    }
   }
 </style>

@@ -1,8 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 
-
 import BkButton from './BkButton.vue';
-
 
 storiesOf('Components/BkButton', module)
   .add('default', () => ({

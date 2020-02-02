@@ -10,7 +10,7 @@
     <tbody>
       <tr v-for="item in data" :key="item.length">
         <td>{{ item.formattedDate }}</td>
-        <td>{{ item.price }}</td>
+        <td>{{ item.price | formatPrice }}</td>
         <td><input v-model="item.validated" class="checkbox" type="checkbox" disabled></td>
       </tr>
     </tbody>
@@ -32,7 +32,6 @@ export default {
   $table-even-row: #f2f2f2;
   table {
     width: 100%;
-    margin: 25px 0;
     text-align: center;
     font-size: $fs-large;
     border: 1px solid $table-odd-row;

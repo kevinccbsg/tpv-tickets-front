@@ -23,6 +23,17 @@ export const uploadPDF = formData => (
     })
 );
 
+export const register = formData => (
+  axios.post(`${TPV_APP_API_URL}/tickets/register`,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: getToken(),
+      },
+    })
+);
+
 export const getTickets = () => axios.get(`${TPV_APP_API_URL}/tickets`, {
   headers: {
     Authorization: getToken(),

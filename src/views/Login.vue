@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { required, minLength } from 'vuelidate/lib/validators';
 import { doLogin } from '@/api';
 import storage from '@/persistence';
 
@@ -48,6 +49,20 @@ export default {
     };
   },
 
+  validations() {
+    return {
+      user: {
+        username: {
+          required,
+        },
+        password: {
+          required,
+          minLength: minLength(4),
+        },
+      },
+    };
+  },
+
   methods: {
     handleLogin() {
       if (this.user.username !== '' && this.user.password !== '') {
@@ -56,7 +71,13 @@ export default {
             setItem('session_token', data.jwt);
             this.$router.push('/');
           })
-          .catch(() => console.log('error'));
+          .catch(() => this.$notify({
+            group: 'notify',
+            title: 'Login error',
+            text: 'Error',
+            duration: 3000,
+            type: 'error',
+          }));
       }
     },
   },
