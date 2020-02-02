@@ -127,7 +127,7 @@ export default {
     .table-container {
       margin: calculateRem(15px) 0;
       .tableTitle {
-        font-size: $fs-h4;
+        font-size: $fs-small;
         padding: calculateRem(15px) 0;
       }
     }
