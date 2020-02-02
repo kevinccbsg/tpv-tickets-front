@@ -3,7 +3,10 @@
     <h3>{{ $t('pdf.title') }}</h3>
     <form novalidate @submit.prevent="sendFile">
       <div class="pdf-container">
-        <label for="file"><span>{{ $t('pdf.fileInput') }}</span></label>
+        <label for="file">
+          <span v-if="!selectedName">{{ $t('pdf.fileInput') }}</span>
+          <span v-else>{{ selectedName }}</span>
+        </label>
         <input
           accept="application/pdf"
           name="file"
@@ -33,12 +36,14 @@ export default {
   data() {
     return {
       pdfFile: null,
+      selectedName: '',
     };
   },
 
   methods: {
     setFile(evt) {
       const [file] = evt.target.files;
+      this.selectedName = file.name;
       this.pdfFile = file;
     },
     sendFile(evt) {
@@ -46,20 +51,26 @@ export default {
         const data = new FormData();
         data.append('file', this.pdfFile);
         return uploadPDF(data)
-          .then(() => this.$notify({
-            group: 'notify',
-            title: 'Upload success',
-            text: 'Success',
-            duration: 3000,
-            type: 'success',
-          }))
-          .catch(() => this.$notify({
-            group: 'notify',
-            title: 'Upload error',
-            text: 'Error',
-            duration: 3000,
-            type: 'error',
-          }));
+          .then(() => {
+            this.$notify({
+              group: 'notify',
+              title: 'Upload success',
+              text: 'Success',
+              duration: 3000,
+              type: 'success',
+            });
+            this.selectedName = '';
+          })
+          .catch(() => {
+            this.$notify({
+              group: 'notify',
+              title: 'Upload error',
+              text: 'Error',
+              duration: 3000,
+              type: 'error',
+            });
+            this.selectedName = '';
+          });
       }
       return null;
     },
