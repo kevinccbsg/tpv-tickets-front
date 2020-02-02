@@ -6,6 +6,6 @@ storiesOf('Components/BkButton', module)
   .add('default', () => ({
     components: { BkButton },
     template: `
-      <BkButton>Login</BkButton>
+      <BkButton :isLoading="false">Login</BkButton>
         `,
   }));

@@ -2,13 +2,23 @@
   <button
     class="btn"
     @click="btnClicked">
-    <slot></slot>
+    <beat-loader :loading="isLoading" :color="'white'" :size="10" />
+    <p class ="content" v-if="!isLoading">
+      <slot></slot>
+    </p>
   </button>
 </template>
 
 <script>
 export default {
   name: 'BkButton',
+
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
   methods: {
     btnClicked() {
@@ -40,6 +50,10 @@ export default {
 
     &:active {
       background-color: $brand;
+    }
+
+    .content {
+      margin: 0;
     }
   }
 </style>
