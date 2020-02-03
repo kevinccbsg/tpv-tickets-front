@@ -17,13 +17,14 @@ describe('BkDynamicSelect', () => {
   });
 
   it('should render the main PdfLoder when the Main tab is clicked', () => {
-    cy.get('[data-cy=PdfLoader-select]').click();
+    cy.get('[data-cy=PdfLoader-select]').click({ force: true });
+    cy.wait(500);
     cy.get('.load-pdf-container.content').should('be.visible');
   });
 
   it('Should be redirected to the login when you click on the exit tab', () => {
     cy.get('[data-cy=Exit-select]').click();
     cy.url().should('be', '/login');
-    cy.getCookies().should('be.empty');
+    cy.getCookie('session_token').should('be.null');
   });
 });

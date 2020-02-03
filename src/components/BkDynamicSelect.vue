@@ -1,9 +1,13 @@
 <template>
   <div class="dynamic-container">
-    <keep-alive>
-      <component class="content" v-bind:is="currentTab">
-      </component>
-    </keep-alive>
+    <transition
+      name="fade" mode="out-in">
+      <keep-alive>
+        <component class="content" v-bind:is="currentTab">
+        </component>
+      </keep-alive>
+    </transition>
+
 
     <div class="btn-container">
       <button
@@ -49,6 +53,13 @@ export default {
 
 <style lang="scss" scoped>
   @import "@/theme/index.scss";
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 
   .dynamic-container {
     margin-bottom: 100px;

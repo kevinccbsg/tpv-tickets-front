@@ -22,4 +22,12 @@ export default {
     fileInput: 'Selecciona un pdf',
     button: 'Subir',
   },
+  notification: {
+    titleSuccess: 'SUCCESS',
+    titleError: 'ERROR',
+    updatePdfSuccess: 'Ticket comprobado con éxito',
+    updatePdfError: 'El ticket no se ha podido comprobar',
+    uploadPdfSuccess: 'Se ha subido el PDF correctamente',
+    uploadPdfError: 'No se ha podido subir el PDF',
+  },
 };

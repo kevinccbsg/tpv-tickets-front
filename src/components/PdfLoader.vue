@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { uploadPDF } from '../api';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'PdfLoader',
@@ -41,6 +41,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['sendPDF']),
     setFile(evt) {
       const [file] = evt.target.files;
       this.selectedName = file.name;
@@ -50,27 +51,7 @@ export default {
       if (evt.target.checkValidity()) {
         const data = new FormData();
         data.append('file', this.pdfFile);
-        return uploadPDF(data)
-          .then(() => {
-            this.$notify({
-              group: 'notify',
-              title: 'Upload success',
-              text: 'Success',
-              duration: 3000,
-              type: 'success',
-            });
-            this.selectedName = '';
-          })
-          .catch(() => {
-            this.$notify({
-              group: 'notify',
-              title: 'Upload error',
-              text: 'Error',
-              duration: 3000,
-              type: 'error',
-            });
-            this.selectedName = '';
-          });
+        return this.sendPDF(data);
       }
       return null;
     },

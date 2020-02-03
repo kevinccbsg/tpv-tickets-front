@@ -7,6 +7,7 @@
           name="date"
           type="text"
           :required="true"
+          data-cy="main-date-input"
           color="secundary"
           :label="$t('ticketForm.date')"
         />
@@ -15,6 +16,7 @@
           name="price"
           type="text"
           :required="true"
+          data-cy="main-price-input"
           color="secundary"
           :label="$t('ticketForm.price')"
         />
@@ -24,7 +26,7 @@
       <h3>{{ $t('table.title') }}</h3>
       <div
         class="table-container"
-        v-for="(dataTable, index) in ticketsByTitle"
+        v-for="(dataTable, index) in getByTitle"
         :key="dataTable.length">
           <h4 class="tableTitle">{{ index }}</h4>
           <BkTable :data="dataTable"></BkTable>
@@ -34,16 +36,16 @@
 </template>
 
 <script>
-import groupBy from 'lodash/groupBy';
+import {
+  mapGetters, mapActions,
+} from 'vuex';
 import { required } from 'vuelidate/lib/validators';
-import { getTickets, register } from '@/api';
 
 export default {
   name: 'Main',
 
   data() {
     return {
-      tickets: [],
       ticket: {
         date: '',
         price: '',
@@ -52,11 +54,9 @@ export default {
   },
 
   created() {
-    getTickets()
-      .then(({ data }) => {
-        this.tickets = data;
-      });
+    this.getTickets();
   },
+
   validations() {
     return {
       ticket: {
@@ -69,33 +69,20 @@ export default {
       },
     };
   },
+
   computed: {
-    ticketsByTitle() {
-      return groupBy(this.tickets, 'pdfName');
-    },
+    ...mapGetters(['getByTitle']),
   },
+
   methods: {
+    ...mapActions(['getTickets', 'updateTicket']),
     send() {
       const { date, price } = this.ticket;
       if (!this.$v.$invalid) {
-        register({
+        this.updateTicket({
           date,
           price,
-        })
-          .then(() => this.$notify({
-            group: 'notify',
-            title: 'Get tickets success',
-            text: 'Success',
-            duration: 3000,
-            type: 'success',
-          }))
-          .catch(() => this.$notify({
-            group: 'notify',
-            title: 'Get tickets error',
-            text: 'Error',
-            duration: 3000,
-            type: 'error',
-          }));
+        });
       }
     },
   },

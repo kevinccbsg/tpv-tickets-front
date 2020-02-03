@@ -22,4 +22,12 @@ export default {
     fileInput: 'Select a pdf',
     button: 'Upload',
   },
+  notification: {
+    titleSuccess: 'SUCCESS',
+    titleError: 'ERROR',
+    updatePdfSuccess: 'Ticket check successfully',
+    updatePdfError: 'The ticket could not be checked',
+    uploadPdfSuccess: 'PDF upload successfully',
+    uploadPdfError: 'PDF could not be uploaded',
+  },
 };

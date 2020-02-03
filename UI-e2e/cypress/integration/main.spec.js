@@ -30,4 +30,16 @@ describe('Main view', () => {
       cy.get('th').eq(2).contains('Comprobado');
     });
   });
+
+  it('Should register a ticket and update the validation', () => {
+    cy.route({
+      method: 'POST',
+      url: '/api/v1/tickets/register',
+      response: { success: true },
+    }).as('regsterTicket');
+    cy.route('GET', '/api/v1/tickets', 'fixture:ticketsAfterRegister').as('getTicketsRequest');
+    cy.get('[data-cy=main-date-input]').type('08-08-2020');
+    cy.get('[data-cy=main-price-input]').type('2,12{enter}');
+    cy.wait(['@regsterTicket', '@getTicketsRequest']);
+  });
 });

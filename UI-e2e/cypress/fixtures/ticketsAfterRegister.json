@@ -1,0 +1,90 @@
+[
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "11:30",
+      "price": "12,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "11-03-2019",
+      "pdfName": "second.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "17:30",
+      "price": "22,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "06-07-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "20:30",
+      "price": "23,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "01-23-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "23:30",
+      "price": "33,40",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "11:40",
+      "price": "12,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "03:50",
+      "price": "11,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "second.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "23:130",
+      "price": "56,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "19:30",
+      "price": "23,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "11:30",
+      "price": "45,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "first.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "14:30",
+      "price": "1,30",
+      "validated": true
+    },
+    {
+      "formattedDate": "12-05-2019",
+      "pdfName": "second.pdf",
+      "date": "2019-11-08T16:37:16.160Z",
+      "hour": "16:30",
+      "price": "2,30",
+      "validated": true
+    }
+  ]
