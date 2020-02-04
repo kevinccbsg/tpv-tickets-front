@@ -14,9 +14,7 @@ export const mutations = {
 };
 
 export const getters = {
-  getByTitle(state) {
-    return groupBy(state.items, TITLE_KEY);
-  },
+  getByTitle: ({ items }) => groupBy(items, TITLE_KEY),
 };
 
 export default {

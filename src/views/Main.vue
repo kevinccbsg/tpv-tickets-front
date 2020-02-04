@@ -20,7 +20,12 @@
           color="secundary"
           :label="$t('ticketForm.price')"
         />
-      <BkButton>{{ $t('ticketForm.button') }}</BkButton>
+      <BkButton
+        :disabled="loading"
+        :isLoading="loading"
+      >
+        {{ $t('ticketForm.button') }}
+      </BkButton>
     </form>
     <div class="tickets-container">
       <h3>{{ $t('table.title') }}</h3>
@@ -37,7 +42,7 @@
 
 <script>
 import {
-  mapGetters, mapActions,
+  mapGetters, mapActions, mapMutations,
 } from 'vuex';
 import { required } from 'vuelidate/lib/validators';
 
@@ -71,14 +76,18 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getByTitle']),
+    ...mapGetters(['getByTitle', 'loading']),
   },
 
   methods: {
     ...mapActions(['getTickets', 'updateTicket']),
+    ...mapMutations({
+      setLoading: 'SET_LOADING',
+    }),
     send() {
       const { date, price } = this.ticket;
       if (!this.$v.$invalid) {
+        this.setLoading(true);
         this.updateTicket({
           date,
           price,

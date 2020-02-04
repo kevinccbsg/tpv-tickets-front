@@ -20,22 +20,22 @@
           color="primary"
           :label="$t('login.passwordLabel')"
         />
-      <bk-button
+      <BkButton
         data-cy="btn"
         class="btn"
-        @click="handleLogin">
-          {{ $t('login.button') }}
-      </bk-button>
+        :isLoading="loading"
+        :disabled="loading"
+        @click="handleLogin"
+      >
+        {{ $t('login.button') }}
+      </BkButton>
     </form>
   </div>
 </template>
 
 <script>
 import { required, minLength } from 'vuelidate/lib/validators';
-import { doLogin } from '@/api';
-import storage from '@/persistence';
-
-const { setItem } = storage('cookieStorage');
+import { mapMutations, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -63,21 +63,19 @@ export default {
     };
   },
 
+  computed: {
+    ...mapGetters(['loading']),
+  },
+
   methods: {
+    ...mapActions(['login']),
+    ...mapMutations({
+      setLoading: 'SET_LOADING',
+    }),
     handleLogin() {
       if (this.user.username !== '' && this.user.password !== '') {
-        doLogin(this.user)
-          .then(({ data }) => {
-            setItem('session_token', data.jwt);
-            this.$router.push('/');
-          })
-          .catch(() => this.$notify({
-            group: 'notify',
-            title: 'Login error',
-            text: 'Error',
-            duration: 3000,
-            type: 'error',
-          }));
+        this.setLoading(true);
+        this.login(this.user);
       }
     },
   },

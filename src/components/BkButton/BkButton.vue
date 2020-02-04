@@ -1,6 +1,7 @@
 <template>
   <button
     class="btn"
+    :disabled="disabled"
     @click="btnClicked">
     <beat-loader :loading="isLoading" :color="'white'" :size="10" />
     <p class ="content" v-if="!isLoading">
@@ -16,6 +17,7 @@ export default {
   props: {
     isLoading: {
       type: Boolean,
+      disabled: Boolean,
       default: false,
     },
   },
@@ -50,6 +52,10 @@ export default {
 
     &:active {
       background-color: $brand;
+    }
+
+    &:disabled {
+      background: lightgrey;
     }
 
     .content {
