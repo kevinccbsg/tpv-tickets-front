@@ -17,9 +17,9 @@ export default {
   props: {
     isLoading: {
       type: Boolean,
-      disabled: Boolean,
       default: false,
     },
+    disabled: Boolean,
   },
 
   methods: {

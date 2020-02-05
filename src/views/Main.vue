@@ -4,6 +4,7 @@
       <h3>{{ $t('ticketForm.title') }}</h3>
         <BkInput
           v-model="ticket.date"
+          id="date"
           name="date"
           type="text"
           :required="true"
@@ -13,6 +14,7 @@
         />
         <BkInput
           v-model="ticket.price"
+          id="price"
           name="price"
           type="text"
           :required="true"

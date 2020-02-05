@@ -49,7 +49,7 @@ export default {
   methods: {
     ...mapActions(['sendPDF']),
     ...mapMutations({
-      setLoading: 'loading/SET_LOADING',
+      setLoading: 'SET_LOADING',
     }),
     setFile(evt) {
       const [file] = evt.target.files;

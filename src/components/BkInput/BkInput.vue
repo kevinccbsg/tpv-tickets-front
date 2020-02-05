@@ -5,11 +5,12 @@
       :value="value"
       :name="name"
       :type="type"
+      :id="id"
       required
       :class="color"
       @input="$emit('input', $event.target.value)"
     />
-    <label :class="color">{{ label }}</label>
+    <label :for="id" :class="color">{{ label }}</label>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
     label: String,
     required: Boolean,
     color: String,
+    id: String,
   },
 };
 </script>

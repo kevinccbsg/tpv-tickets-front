@@ -4,6 +4,7 @@
       <h2>{{ $t('login.titleApp') }}</h2>
         <BkInput
           dataCy="username"
+          id="username"
           v-model="user.username"
           name="username"
           type="text"
@@ -13,6 +14,7 @@
         />
         <BkInput
           dataCy="password"
+          id="password"
           v-model="user.password"
           name="password"
           type="password"
