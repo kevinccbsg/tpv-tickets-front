@@ -96,6 +96,9 @@ export default {
         });
       }
     },
+    track () {
+      this.$ga.page('/');
+    }
   },
 };
 </script>

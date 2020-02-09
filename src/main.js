@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
+import VueAnalytics from 'vue-analytics';
 import VueNotification from 'vue-notification';
 import { VueSpinners } from '@saeris/vue-spinners';
 import App from './App.vue';
@@ -19,6 +20,10 @@ Vue.use(VueSpinners);
 
 Vue.use(VueNotification, {
   componentName: 'VueNotification',
+});
+
+Vue.use(VueAnalytics, {
+  id: 'UA-158065168-1',
 });
 
 Vue.use(Vuelidate);
