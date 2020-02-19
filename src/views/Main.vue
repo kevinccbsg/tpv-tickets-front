@@ -33,10 +33,12 @@
       <h3>{{ $t('table.title') }}</h3>
       <div
         class="table-container"
-        v-for="(dataTable, index) in getByTitle"
+        v-for="(dataTable, title) in getByTitle"
         :key="dataTable.length">
-          <h4 class="tableTitle">{{ index }}</h4>
-          <BkTable :data="dataTable"></BkTable>
+          <BkCollapse :title="title" :isOpened="isOpened">
+            <BkTable :data="dataTable"></BkTable>
+          </BkCollapse>
+          <!-- <h4 class="tableTitle">{{ index }}</h4> -->
       </div>
     </div>
   </div>
@@ -57,6 +59,8 @@ export default {
         date: '',
         price: '',
       },
+      isOpened: false,
+      collapsibleItems: [],
     };
   },
 
@@ -96,9 +100,9 @@ export default {
         });
       }
     },
-    track () {
+    track() {
       this.$ga.page('/');
-    }
+    },
   },
 };
 </script>
@@ -129,7 +133,6 @@ export default {
       margin: calculateRem(15px) 0;
       .tableTitle {
         font-size: $fs-small;
-        padding: calculateRem(15px) 0;
       }
     }
   }

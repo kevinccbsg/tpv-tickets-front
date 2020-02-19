@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const TOTAL_TICKETS = 11;
+const TOTAL_TICKETS = 2;
 
 describe('Main view', () => {
   beforeEach(() => {
@@ -18,12 +18,13 @@ describe('Main view', () => {
     cy.contains('nav', 'BRIKEV');
   });
 
-  it(`The table should have a total of ${TOTAL_TICKETS} rows`, () => {
-    cy.get('table tbody').children().should('have.length', TOTAL_TICKETS);
+  it(`The table should have a total of ${2} pdfs`, () => {
+    cy.get('.table-container').should('have.length', 2);
   });
 
   it('Testing the headers of the table', () => {
-    cy.get('.tickets-container .table-container > table thead tr').children().should('have.length', 6);
+    cy.get('.tickets-container .container .header').first().click({ force: true });
+    cy.get('.content > table thead tr').children().should('have.length', 3);
     cy.get('table > thead > tr').within(() => {
       cy.get('th').eq(0).contains('Fecha');
       cy.get('th').eq(1).contains('Precio');
