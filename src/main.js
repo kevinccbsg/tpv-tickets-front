@@ -24,6 +24,10 @@ Vue.use(VueNotification, {
 
 Vue.use(VueAnalytics, {
   id: 'UA-158065168-1',
+  router,
+  autoTracking: {
+    screenview: true,
+  },
 });
 
 Vue.use(Vuelidate);
