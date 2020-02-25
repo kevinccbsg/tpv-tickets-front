@@ -5,6 +5,7 @@
       :value="value"
       :name="name"
       :type="type"
+      :placeholder="placeholder"
       :id="id"
       required
       :class="color"
@@ -23,6 +24,7 @@ export default {
     name: String,
     type: String,
     label: String,
+    placeholder: String,
     required: Boolean,
     color: String,
     id: String,
@@ -62,6 +64,12 @@ export default {
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus {
         background-color: transparent;
+      }
+      &:focus::placeholder {
+        color:transparent;
+      }
+      &::placeholder {
+        text-align: right;
       }
     }
     label {

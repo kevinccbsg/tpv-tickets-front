@@ -33,7 +33,7 @@ export default {
   table {
     width: 100%;
     text-align: center;
-    font-size: $fs-large;
+    font-size: $fs-medium;
     border: 1px solid $table-odd-row;
     line-height: $base-line-height;
   }

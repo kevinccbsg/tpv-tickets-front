@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-const TOTAL_TICKETS = 2;
 
 describe('Main view', () => {
   beforeEach(() => {

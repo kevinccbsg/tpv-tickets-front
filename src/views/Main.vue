@@ -8,12 +8,15 @@
           name="date"
           type="text"
           :required="true"
+          placeholder="(dd-mm-yyyy)"
           data-cy="main-date-input"
           color="secundary"
           :label="$t('ticketForm.date')"
         />
+        <div class="error" v-if="!$v.ticket.date.mustBeDate">{{ $t('error.dateFormat') }}</div>
+
         <BkInput
-          v-model="ticket.price"
+          v-model="$v.ticket.price.$model"
           id="price"
           name="price"
           type="text"
@@ -22,6 +25,9 @@
           color="secundary"
           :label="$t('ticketForm.price')"
         />
+        <div class="error" v-if="!$v.ticket.price.mustBeDecimal || !$v.ticket.price.mmaxLength">
+          {{ $t('error.priceFormat') }}
+        </div>
       <BkButton
         :disabled="loading"
         :isLoading="loading"
@@ -38,7 +44,6 @@
           <BkCollapse :title="title" :isOpened="isOpened">
             <BkTable :data="dataTable"></BkTable>
           </BkCollapse>
-          <!-- <h4 class="tableTitle">{{ index }}</h4> -->
       </div>
     </div>
   </div>
@@ -48,7 +53,8 @@
 import {
   mapGetters, mapActions, mapMutations,
 } from 'vuex';
-import { required } from 'vuelidate/lib/validators';
+import { required, maxLength } from 'vuelidate/lib/validators';
+import { contains, dateFormat } from '@/utils';
 
 export default {
   name: 'Main',
@@ -73,9 +79,12 @@ export default {
       ticket: {
         date: {
           required,
+          mustBeDate: dateFormat,
         },
         price: {
           required,
+          mmaxLength: maxLength(5),
+          mustBeDecimal: contains(','),
         },
       },
     };
@@ -122,7 +131,7 @@ export default {
   .form-container {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
@@ -135,5 +144,13 @@ export default {
         font-size: $fs-small;
       }
     }
+  }
+  .error {
+    padding-bottom: calculateRem(10px);
+    color: $error;
+    font-weight: $regular;
+    text-align: left;
+    font-size: $fs-small;
+    width: 100%;
   }
 </style>

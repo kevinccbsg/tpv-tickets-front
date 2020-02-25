@@ -31,4 +31,8 @@ export default {
     uploadPdfError: 'No se ha podido subir el PDF',
     loginError: 'Ha ocurrido un error al iniciar sesión',
   },
+  error: {
+    dateFormat: 'La fecha debe de tener el formato: dd-mm-aaaa',
+    priceFormat: 'El precio debe tener el formato (ej: 19,00)',
+  },
 };

@@ -31,4 +31,8 @@ export default {
     uploadPdfError: 'PDF could not be uploaded',
     loginError: 'An error occurred while logging in',
   },
+  error: {
+    dateFormat: 'The date must be in the format (dd-mm-yyyy)',
+    priceFormat: 'The price must have the format (ex: 19,00)',
+  },
 };
