@@ -21,10 +21,10 @@ export default {
   data() {
     return {
       currentTab: 'Main',
-      tabs: ['Main', 'PdfLoader', 'Exit'],
+      tabs: ['Main', 'Pdf', 'Exit'],
       tabsText: {
         Main: 'home',
-        PdfLoader: 'cloud_upload',
+        Pdf: 'cloud_upload',
         Exit: 'exit_to_app',
       },
       brandName: 'BRIKEV',

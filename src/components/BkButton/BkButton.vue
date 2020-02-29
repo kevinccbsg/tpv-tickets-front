@@ -36,16 +36,16 @@ export default {
 
   .btn {
     background: $brand;
-    border-radius: 8px;
+    border-radius: calculateRem(8px);
     color: $white;
-    height: 45px;
+    height: calculateRem(45px);
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    height: 45px;
+    height: calculateRem(45px);
     font-size: $fs-base;
     transition: all .15s linear;
-    border: 1px solid $white;
+    border: calculateRem(1px) solid $white;
     &:hover {
       background: lighten($brand, 20%);
     }

@@ -14,11 +14,5 @@ export default {
   components: {
     Notification,
   },
-
-  data() {
-    return {
-      currentTab: String,
-    };
-  },
 };
 </script>

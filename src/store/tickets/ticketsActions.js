@@ -16,6 +16,7 @@ export default {
       .finally(() => commit('SET_LOADING', false));
   },
   sendPDF({ commit, dispatch }, payload) {
+    commit('SET_LOADING', true);
     return uploadPDF(payload)
       .then(() => {
         dispatch('sendSucces', { title: i18n.t('notification.titleSuccess'), text: i18n.t('notification.uploadPdfSuccess') });

@@ -39,26 +39,26 @@ export default {
     align-items: flex-start;
     width: 100%;
     position: relative;
-    margin: 30px 0;
+    margin: calculateRem(30px) 0;
     input {
       font-size: $fs-small;
       border: none;
       width: 100%;
       outline: none;
       background: none;
-      height: 50px;
+      height: calculateRem(50px);
       &:active ~label,
       &:focus ~label,
       &:valid ~label {
-        bottom: 50px;
+        bottom: calculateRem(50px);
       }
       &.primary {
         color: $white;
-        border-bottom: 2px solid $white;
+        border-bottom: calculateRem(2px) solid $white;
       }
       &.secundary {
         color: black;
-        border-bottom: 2px solid black;
+        border-bottom: calculateRem(2px) solid black;
       }
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
@@ -74,7 +74,7 @@ export default {
     }
     label {
       color: $white;
-      bottom: 12px;
+      bottom: calculateRem(12px);
       position: absolute;
       font-size: $fs-large;
       font-weight: 700;

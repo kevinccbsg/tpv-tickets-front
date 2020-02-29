@@ -16,18 +16,10 @@ storiesOf('Components/BkCollapse', module)
       },
     },
     template: `
-      <BkCollapse :isOpened="isOpened">
-        <template #header>
-                <div>
-                    <p>Collapse</p>
-                    <i class="material-icons">
-                    <button @click="handleToggle"></button>
-                </div>
-            </template>
-
-        <template #body>
-            <h2>Aqui va el contenido</h2>
-        </template>
+      <BkCollapse title="Here will be a title" :isOpened="isOpened">
+        <div>
+          <h2>Here will be the content</h2>
+        </div>
       </BkCollapse>
         `,
   }));

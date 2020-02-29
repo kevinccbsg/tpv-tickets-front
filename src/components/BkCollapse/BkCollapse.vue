@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/theme/index.scss";
-$shadow: -1px 0px 7px -4px rgba(0,0,0,0.98);
+$shadow: calculateRem(-1px) calculateRem(0px) calculateRem(7px) calculateRem(-4px) rgba(0,0,0,0.98);
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
@@ -55,7 +55,7 @@ $shadow: -1px 0px 7px -4px rgba(0,0,0,0.98);
 .container {
   position: relative;
   box-shadow: $shadow;
-  padding: 15px;
+  padding: calculateRem(15px);
   height: 100%;
   background: $white;
 }

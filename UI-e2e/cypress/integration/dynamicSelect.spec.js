@@ -17,7 +17,7 @@ describe('BkDynamicSelect', () => {
   });
 
   it('should render the main PdfLoder when the Main tab is clicked', () => {
-    cy.get('[data-cy=PdfLoader-select]').click({ force: true });
+    cy.get('[data-cy=Pdf-select]').click({ force: true });
     cy.wait(500);
     cy.get('.load-pdf-container.content').should('be.visible');
   });

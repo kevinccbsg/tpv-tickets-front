@@ -31,6 +31,24 @@ describe('Main view', () => {
     });
   });
 
+  it('Input date validations', () => {
+    cy.get('[data-cy=main-date-input]').type('08/08/2020');
+    cy.get('.error').should('be.visible');
+    cy.get('[data-cy=main-date-input]').clear().type('08-32-2020');
+    cy.get('.error').should('be.visible');
+  });
+
+  it('Input price validations', () => {
+    cy.get('[data-cy=main-price-input]').clear().type('1234');
+    cy.get('.error').should('be.visible');
+    cy.get('[data-cy=main-price-input]').clear().type('1.23');
+    cy.get('.error').should('be.visible');
+    cy.get('[data-cy=main-price-input]').clear().type('12,23234');
+    cy.get('.error').should('be.visible');
+    cy.get('[data-cy=main-price-input]').clear().type('41,2');
+    cy.get('.error').should('be.visible');
+  });
+
   it('Should register a ticket and update the validation', () => {
     cy.route({
       method: 'POST',

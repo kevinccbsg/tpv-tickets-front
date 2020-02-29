@@ -27,14 +27,14 @@
 
 <script>
 import Main from '@/views/Main.vue';
-import PdfLoader from '@/components/PdfLoader.vue';
+import Pdf from '@/views/Pdf.vue';
 
 export default {
   name: 'BkDynamicSelect',
 
   components: {
     Main,
-    PdfLoader,
+    Pdf,
   },
 
   props: {
@@ -62,13 +62,13 @@ export default {
   }
 
   .dynamic-container {
-    margin-bottom: 100px;
+    margin-bottom: calculateRem(100px);
   }
   .btn-container {
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: 60px;
+    height: calculateRem(60px);
     display: flex;
     font-weight: 700;
   }
@@ -92,6 +92,6 @@ export default {
     }
   }
   .tab {
-    padding: 10px;
+    padding: calculateRem(10px);
   }
 </style>

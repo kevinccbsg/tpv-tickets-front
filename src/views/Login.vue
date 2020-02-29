@@ -104,14 +104,14 @@ export default {
       color: $white;
       text-align: center;
       font-size: $fs-h2;
-      padding: 25px 0;
+      padding: calculateRem(25px) 0;
     }
   }
   .btn {
     width: 100%;
     &:hover, &:active {
       color: $white;
-      border: 2px solid $white;
+      border: calculateRem(2px) solid $white;
     }
   }
 </style>

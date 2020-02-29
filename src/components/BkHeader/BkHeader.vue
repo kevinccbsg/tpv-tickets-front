@@ -24,7 +24,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
+    min-height: calculateRem(48px);
     background: $brand;
     color: $white;
     font-family: $base-font-title;

@@ -34,16 +34,16 @@ export default {
     width: 100%;
     text-align: center;
     font-size: $fs-medium;
-    border: 1px solid $table-odd-row;
+    border: calculateRem(1px) solid $table-odd-row;
     line-height: $base-line-height;
   }
   .checkbox {
-    height: 20px;
-    width: 20px;
+    height: calculateRem(20px);
+    width: calculateRem(20px);
   }
   table {
     th, td {
-      padding: 10px;
+      padding: calculateRem(10px);
     }
 
     thead {
