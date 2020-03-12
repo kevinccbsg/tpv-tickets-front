@@ -33,7 +33,7 @@ export const register = body => (
     })
 );
 
-export const getTickets = () => axios.get(`${TPV_APP_API_URL}/tickets`, {
+export const getData = () => axios.get(`${TPV_APP_API_URL}/tickets`, {
   headers: {
     Authorization: getToken(),
   },

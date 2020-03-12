@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BkButton component Should be render correctly 1`] = `
+<button
+  class="btn"
+>
+  <beat-loader
+    color="white"
+    size="10"
+  />
+   
+  <p
+    class="content"
+  />
+</button>
+`;

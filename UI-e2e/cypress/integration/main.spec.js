@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 describe('Main view', () => {
   beforeEach(() => {
     cy.server();

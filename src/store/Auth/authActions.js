@@ -1,7 +1,8 @@
 import { doLogin } from '@/api';
 import storage from '@/persistence';
-import i18n from '@/lang/i18n';
 import router from '@/router/routes';
+import { NOTIFICATION_LOGIN } from '../notificationTypes';
+
 
 const { setItem } = storage('cookieStorage');
 
@@ -12,7 +13,7 @@ export default {
         setItem('session_token', data.jwt);
         router.push('/');
       })
-      .catch(() => dispatch('sendError', { title: i18n.t('notification.titleError'), text: i18n.t('notification.loginError') }))
+      .catch(() => dispatch('sendError', { title: NOTIFICATION_LOGIN.error.title, text: NOTIFICATION_LOGIN.error.text }))
       .finally(() => commit('SET_LOADING', false));
   },
 };

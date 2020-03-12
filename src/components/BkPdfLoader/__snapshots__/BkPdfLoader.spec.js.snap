@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BkPdfLoader component Should be render correctly 1`] = `
+<form
+  novalidate="novalidate"
+>
+  <div
+    class="pdf-container"
+  >
+    <label
+      for="file"
+    >
+      <span
+        data-cy="select-pdf"
+      >
+        
+          
+      
+      </span>
+    </label>
+     
+    <input
+      accept="application/pdf"
+      id="file"
+      name="file"
+      required="required"
+      type="file"
+    />
+  </div>
+   
+  <bkbutton
+    class="btn"
+    data-cy="btn-pdf-loader"
+    type="submit"
+  >
+    
+      
+  
+  </bkbutton>
+</form>
+`;

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 describe('BkDynamicSelect', () => {
   beforeEach(() => {
     cy.server();

@@ -29,7 +29,7 @@ describe('PDF view', () => {
     cy.get('.notify .error').should('be.visible');
   });
 
-  it.only('Should upload a pdf correctly', () => {
+  it('Should upload a pdf correctly', () => {
     const file = '../fixtures/file.json';
     const fileName = 'file.json';
     cy.route('POST', '/api/v1/tickets', 'fixture:file').as('filePdf');

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 describe('Login view', () => {
   beforeEach(() => {
     cy.server();

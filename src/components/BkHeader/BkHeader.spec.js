@@ -1,5 +1,4 @@
-import { expect } from 'chai';
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import BkHeader from '@/components/BkHeader/BkHeader.vue';
 
 describe('BkHeader component', () => {
@@ -8,6 +7,10 @@ describe('BkHeader component', () => {
     const wrapper = shallowMount(BkHeader, {
       propsData: { title },
     });
-    expect(wrapper.text()).to.include(title);
+    expect(wrapper.text()).toMatch(title);
+  });
+  it('Should be render correctly', () => {
+    const wrapper = mount(BkHeader);
+    expect(wrapper.element).toMatchSnapshot();
   });
 });

@@ -6,7 +6,7 @@ const NOTIFICATION_TYPES = {
 };
 
 export default {
-  async sendSucces(context, { title = '', text = '' }) {
+  async sendSuccess(context, { title = '', text = '' }) {
     Vue.notify({
       group: 'notify',
       title,

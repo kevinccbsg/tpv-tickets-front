@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BkCollapse component Should be render correctly 1`] = `
+<div
+  class="container not-expanded"
+>
+  <div
+    class="header"
+  >
+    <p
+      class="title"
+      name="header"
+    >
+      
+    </p>
+     
+    <i
+      class="material-icons icon"
+    >
+      keyboard_arrow_down
+    </i>
+  </div>
+   
+  <!---->
+</div>
+`;
