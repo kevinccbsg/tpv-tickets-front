@@ -1,6 +1,8 @@
 import ticketsActions from './ticketsActions';
-import { getData, register, uploadPDF } from '@/api';
-import { NOTIFICATION_UPDATE, NOTIFICATION_UPLOAD } from '../notificationTypes';
+import {
+  getData, register, uploadPDF, deleteTicket,
+} from '@/api';
+import { NOTIFICATION_UPDATE, NOTIFICATION_UPLOAD, NOTIFICATION_DELETE } from '../notificationTypes';
 
 jest.mock('@/api');
 
@@ -31,6 +33,21 @@ describe('Tickets actions', () => {
     expect(commit).toHaveBeenCalledWith('SET_LOADING', true);
     expect(dispatch).toHaveBeenCalledWith('sendSuccess', { text: NOTIFICATION_UPLOAD.success.text, title: NOTIFICATION_UPLOAD.success.title });
     expect(dispatch).toHaveBeenCalledWith('getTickets');
+    expect(commit).toHaveBeenCalledWith('SET_LOADING', false);
+  });
+
+  it('Delete ticket', async () => {
+    const commit = jest.fn();
+    const dispatch = jest.fn();
+    const state = {
+      items: [{ id: 1 }, { id: 2 }],
+    };
+    const res = { data: { id: 1 } };
+    deleteTicket.mockResolvedValueOnce(res);
+    await ticketsActions.deleteTicket({ commit, dispatch, state }, 1);
+    expect(commit).toHaveBeenCalledWith('SET_LOADING', true);
+    expect(commit).toHaveBeenCalledWith('SET_ITEMS', [{ id: 2 }]);
+    expect(dispatch).toHaveBeenCalledWith('sendSuccess', { text: NOTIFICATION_DELETE.success.text, title: NOTIFICATION_DELETE.success.title });
     expect(commit).toHaveBeenCalledWith('SET_LOADING', false);
   });
 });

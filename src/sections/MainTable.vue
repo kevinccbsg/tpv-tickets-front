@@ -4,14 +4,30 @@
       <tr>
         <th>{{ $t('table.date') }}</th>
         <th>{{ $t('table.price') }}</th>
-        <th>{{ $t('table.validated') }}</th>
+        <th></th>
+        <th v-if="hasNoPdf"></th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="item in data" :key="item.length">
         <td>{{ item.formattedDate }}</td>
         <td>{{ item.price | formatPrice }}</td>
-        <td><input v-model="item.validated" class="checkbox" type="checkbox" disabled></td>
+        <td>
+          <input
+            v-model="item.validated"
+            class="checkbox"
+            type="checkbox"
+            disabled
+          >
+        </td>
+        <td
+          v-if="withoutPdf(item.pdfName)"
+          class="delete material-icons"
+          @click="handleDeleteItem(item.id)"
+          :data-cy="`deleteBtn-${item.id}`"
+        >
+          delete
+        </td>
       </tr>
     </tbody>
   </table>
@@ -19,10 +35,24 @@
 
 <script>
 export default {
-  name: 'BkTable',
+  name: 'MainTable',
 
   props: {
     data: Array,
+  },
+  data() {
+    return {
+      hasNoPdf: false,
+    };
+  },
+  methods: {
+    handleDeleteItem(id) {
+      this.$emit('onDelete', id);
+    },
+    withoutPdf(name) {
+      if (name === 'Tickets sin pdf') this.hasNoPdf = true;
+      return name === 'Tickets sin pdf';
+    },
   },
 };
 </script>
@@ -58,6 +88,10 @@ export default {
 
       &:hover {
         background-color: $table-odd-row;
+      }
+      .delete {
+        font-size: 20px;
+        cursor: pointer;
       }
     }
   }

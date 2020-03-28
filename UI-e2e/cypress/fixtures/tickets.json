@@ -1,5 +1,42 @@
 [
   {
+    "id": "30",
+    "formattedDate": "12-05-2019",
+    "pdfName": "Tickets sin pdf",
+    "date": "2019-11-08T16:37:16.160Z",
+    "hour": "19:30",
+    "price": "23,30",
+    "validated": false
+  },
+  {
+    "id": "31",
+    "formattedDate": "12-05-2019",
+    "pdfName": "Tickets sin pdf",
+    "date": "2019-11-08T16:37:16.160Z",
+    "hour": "11:30",
+    "price": "45,30",
+    "validated": false
+  },
+  {
+    "id": "32",
+    "formattedDate": "12-05-2019",
+    "pdfName": "Tickets sin pdf",
+    "date": "2019-11-08T16:37:16.160Z",
+    "hour": "14:30",
+    "price": "1,30",
+    "validated": false
+  },
+  {
+    "id": "33",
+    "formattedDate": "12-05-2019",
+    "pdfName": "Tickets sin pdf",
+    "date": "2019-11-08T16:37:16.160Z",
+    "hour": "16:30",
+    "price": "2,30",
+    "validated": false
+  },
+  {
+    "id": "1",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -8,6 +45,7 @@
     "validated": true
   },
   {
+    "id": "2",
     "formattedDate": "11-03-2019",
     "pdfName": "second.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -16,6 +54,7 @@
     "validated": true
   },
   {
+    "id": "3",
     "formattedDate": "06-07-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -24,6 +63,7 @@
     "validated": false
   },
   {
+    "id": "4",
     "formattedDate": "01-23-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -32,6 +72,7 @@
     "validated": false
   },
   {
+    "id": "5",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -40,6 +81,7 @@
     "validated": false
   },
   {
+    "id": "6",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -48,6 +90,7 @@
     "validated": true
   },
   {
+    "id": "7",
     "formattedDate": "12-05-2019",
     "pdfName": "second.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -56,6 +99,7 @@
     "validated": true
   },
   {
+    "id": "8",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -64,6 +108,7 @@
     "validated": false
   },
   {
+    "id": "9",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -72,6 +117,7 @@
     "validated": false
   },
   {
+    "id": "10",
     "formattedDate": "12-05-2019",
     "pdfName": "first.pdf",
     "date": "2019-11-08T16:37:16.160Z",
@@ -80,6 +126,7 @@
     "validated": false
   },
   {
+    "id": "11",
     "formattedDate": "12-05-2019",
     "pdfName": "second.pdf",
     "date": "2019-11-08T16:37:16.160Z",

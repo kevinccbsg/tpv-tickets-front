@@ -22,6 +22,17 @@ export const NOTIFICATION_UPLOAD = {
   },
 };
 
+export const NOTIFICATION_DELETE = {
+  success: {
+    title: i18n.t('notification.titleSuccess'),
+    text: i18n.t('notification.deleteTicketSuccess'),
+  },
+  error: {
+    title: i18n.t('notification.titleError'),
+    text: i18n.t('notification.deleteTicketError'),
+  },
+};
+
 export const NOTIFICATION_LOGIN = {
   success: {},
   error: {

@@ -14,3 +14,18 @@ exports[`BkButton component Should be render correctly 1`] = `
   />
 </button>
 `;
+
+exports[`BkButton component Should has outline class 1`] = `
+<button
+  class="btn outline"
+>
+  <beat-loader
+    color="white"
+    size="10"
+  />
+   
+  <p
+    class="content"
+  />
+</button>
+`;

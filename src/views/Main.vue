@@ -13,7 +13,12 @@
           color="secundary"
           :label="$t('ticketForm.date')"
         />
-        <div class="error" v-if="!$v.ticket.date.mustBeDate">{{ $t('error.dateFormat') }}</div>
+        <div
+          class="error"
+          v-if="!$v.ticket.date.mustBeDate"
+        >
+          {{ $t('error.dateFormat') }}
+        </div>
 
         <BkInput
           v-model="$v.ticket.price.$model"
@@ -25,7 +30,10 @@
           color="secundary"
           :label="$t('ticketForm.price')"
         />
-        <div class="error" v-if="!$v.ticket.price.mustBeDecimal || !$v.ticket.price.mmaxLength">
+        <div
+          class="error"
+          v-if="!$v.ticket.price.mustBeDecimal || !$v.ticket.price.mmaxLength"
+        >
           {{ $t('error.priceFormat') }}
         </div>
       <BkButton
@@ -41,11 +49,23 @@
         class="table-container"
         v-for="(dataTable, title) in getByTitle"
         :key="dataTable.length">
-          <BkCollapse :title="title" :isOpened="isOpened">
-            <BkTable :data="dataTable"></BkTable>
+          <BkCollapse
+            :title="title"
+            :isOpened="isOpened"
+          >
+            <MainTable
+              :data="dataTable"
+              @onDelete="handleClickDeleteIcon"
+            />
           </BkCollapse>
       </div>
     </div>
+    <MainModal
+      :opened="showModal"
+      @close="showModal = true"
+      @onCancel="showModal = false"
+      @delete="handleDeleteTicket"
+    />
   </div>
 </template>
 
@@ -55,10 +75,14 @@ import {
 } from 'vuex';
 import { required, maxLength } from 'vuelidate/lib/validators';
 import { priceFormat, dateFormat } from '@/utils';
+import { MainModal, MainTable } from '../sections';
 
 export default {
   name: 'Main',
-
+  components: {
+    MainModal,
+    MainTable,
+  },
   data() {
     return {
       ticket: {
@@ -66,6 +90,7 @@ export default {
         price: '',
       },
       isOpened: false,
+      showModal: false,
       collapsibleItems: [],
     };
   },
@@ -95,7 +120,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['getTickets', 'updateTicket']),
+    ...mapActions(['getTickets', 'updateTicket', 'deleteTicket']),
     ...mapMutations({
       setLoading: 'SET_LOADING',
     }),
@@ -108,6 +133,14 @@ export default {
           price,
         });
       }
+    },
+    handleClickDeleteIcon(id) {
+      this.ticketId = id;
+      this.showModal = true;
+    },
+    handleDeleteTicket() {
+      this.deleteTicket(this.ticketId);
+      this.showModal = false;
     },
     track() {
       this.$ga.page('/');

@@ -15,17 +15,17 @@ describe('Main view', () => {
     cy.contains('nav', 'BRIKEV');
   });
 
-  it(`The table should have a total of ${2} pdfs`, () => {
-    cy.get('.table-container').should('have.length', 2);
+  it(`The table should have a total of ${3} pdfs`, () => {
+    cy.get('.table-container').should('have.length', 3);
   });
 
   it('Testing the headers of the table', () => {
+    const TOTAL_COLUMNS = 4;
     cy.get('.tickets-container .container .header').first().click({ force: true });
-    cy.get('.content > table thead tr').children().should('have.length', 3);
+    cy.get('.content > table thead tr').children().should('have.length', TOTAL_COLUMNS);
     cy.get('table > thead > tr').within(() => {
       cy.get('th').eq(0).contains('Fecha');
       cy.get('th').eq(1).contains('Precio');
-      cy.get('th').eq(2).contains('Comprobado');
     });
   });
 
@@ -57,5 +57,26 @@ describe('Main view', () => {
     cy.get('[data-cy=main-date-input]').type('08-08-2020');
     cy.get('[data-cy=main-price-input]').type('2,12{enter}');
     cy.wait(['@regsterTicket', '@getTicketsRequest']);
+  });
+
+  it('Should show a modal and delete a ticket', () => {
+    const TOTAL_ROWS = 4;
+    cy.route('DELETE', '/api/v1/tickets/30', 'fixture:deletedTicket').as('deletedTicket');
+    cy.contains('Tickets sin pdf').click({ force: true });
+    cy.get('table > tbody > tr').should('have.length', TOTAL_ROWS);
+    cy.get('[data-cy=deleteBtn-30]').click();
+    cy.get('.deleteBtn').click();
+    cy.wait('@deletedTicket');
+    cy.get('.notify .success').should('be.visible');
+    cy.contains('Tickets sin pdf').click({ force: true });
+    cy.get('table > tbody > tr').should('have.length', TOTAL_ROWS - 1);
+  });
+
+  it('Should show a modal and delete a ticket badly', () => {
+    cy.route('DELETE', '/api/v1/tickets/1', 'fixture:deletedTicket').as('deletedTicket');
+    cy.contains('Tickets sin pdf').click({ force: true });
+    cy.get('[data-cy=deleteBtn-31]').click();
+    cy.get('.deleteBtn').click();
+    cy.get('.error').should('be.visible');
   });
 });

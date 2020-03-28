@@ -38,3 +38,9 @@ export const getData = () => axios.get(`${TPV_APP_API_URL}/tickets`, {
     Authorization: getToken(),
   },
 });
+
+export const deleteTicket = id => axios.delete(`${TPV_APP_API_URL}/tickets/${id}`, {
+  headers: {
+    Authorization: getToken(),
+  },
+});
