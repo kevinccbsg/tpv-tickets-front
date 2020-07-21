@@ -9,6 +9,7 @@ on:
 
 jobs:
   tests:
+    if: ${{ github.ref != 'refs/heads/master' }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,6 +27,7 @@ jobs:
     - run: npm run test:unit -- --ci
 
   cypress-run:
+    if: ${{ github.ref != 'refs/heads/master' }}
     runs-on: ubuntu-16.04
 
     strategy:
