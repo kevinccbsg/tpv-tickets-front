@@ -1,32 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BkModal component Should be render correctly 1`] = `
-<div
-  class="modal-mask"
+<transition-stub
   name="modal"
 >
   <div
-    class="modal-wrapper"
+    class="modal-mask"
   >
     <div
-      class="modal-container"
+      class="modal-wrapper"
     >
       <div
-        class="modal-body"
-      />
-       
-      <div
-        class="modal-footer"
+        class="modal-container"
       >
-        <button
-          class="modal-default-button"
+        <div
+          class="modal-body"
+        />
+         
+        <div
+          class="modal-footer"
         >
-          
+          <button
+            class="modal-default-button"
+          >
+            
               OK
             
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</transition-stub>
 `;

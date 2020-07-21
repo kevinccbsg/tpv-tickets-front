@@ -21,6 +21,11 @@ exports[`BkCollapse component Should be render correctly 1`] = `
     </i>
   </div>
    
-  <!---->
+  <transition-stub
+    mode="out-in"
+    name="fade"
+  >
+    <!---->
+  </transition-stub>
 </div>
 `;
