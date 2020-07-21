@@ -10,6 +10,6 @@
   "author": "brikev",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^3.8.2"
+    "cypress": "^4.11.0"
   }
 }
