@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-storybook": "build-storybook -c .storybook -o ./static-storybook",
     "test:unit": "vue-cli-service test:unit",
     "test:cypress": "cd UI-e2e && npm run cy:open",
     "test:e2e": "cd UI-e2e && npm run cy:run",

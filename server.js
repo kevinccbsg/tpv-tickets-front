@@ -12,6 +12,7 @@ app.use(helmet());
 app.use(compression());
 
 app.use(express.static('dist'));
+app.use('/storybook', express.static(join(__dirname, 'static-storybook')));
 app.get('/*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'));
 });

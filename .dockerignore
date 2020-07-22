@@ -1,0 +1,4 @@
+node_modules/
+dist
+static-storybook
+UI-e2e
