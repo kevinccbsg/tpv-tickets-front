@@ -75,7 +75,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
-    needs: tests
     if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     name: Build Publish image, and Deploy on Dev Environment
