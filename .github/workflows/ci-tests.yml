@@ -90,32 +90,41 @@ jobs:
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
 
-    # # Configure docker to use the gcloud command-line tool as a credential helper
-    # - run: |
-    #     # Set up docker to authenticate
-    #     # via gcloud command-line tool.
-    #     gcloud auth configure-docker
+    # Configure docker to use the gcloud command-line tool as a credential helper
+    - run: |
+        # Set up docker to authenticate
+        # via gcloud command-line tool.
+        gcloud auth configure-docker
 
-    # - name: Build
-    #   run: |
-    #     docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
-    #       --build-arg GITHUB_SHA="$GITHUB_SHA" .
+    - name: Build
+      run: |
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" .
 
-    # # Push the Docker image to Google Container Registry
-    # - name: Publish
-    #   run: |
-    #     docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
+    # Push the Docker image to Google Container Registry
+    - name: Publish
+      run: |
+        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
 
-    # # Set up kustomize
-    # - name: Set up Kustomize
-    #   run: |
-    #     curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-    #     chmod u+x ./kustomize
-    #     ./kustomize version
+    # Set up kustomize
+    - name: Set up Kustomize
+      run: |
+        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+        chmod u+x ./kustomize
+        ./kustomize version
 
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
-        ls
-
+        cd deployment && ../kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA} && cd ..
+        ls deployment
+        cat deployment/kustomization.yaml
+        cat <<EOF >>deployment/kustomization.yaml
+        replicas:
+        - name: $DEPLOYMENT_NAME
+          count: 2
+        EOF
+        ./kustomize build deployment
+        ./kustomize build deployment | kubectl apply -f -
+        kubectl get services -o wide
