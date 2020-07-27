@@ -105,3 +105,25 @@ jobs:
     - name: Publish
       run: |
         docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
+
+    # Set up kustomize
+    - name: Set up Kustomize
+      run: |
+        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+        chmod u+x ./kustomize
+        ./kustomize version
+
+    # Deploy the Docker image to the GKE cluster
+    - name: Deploy
+      run: |
+        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
+        cd deployment && ../kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA} && cd ..
+        cat deployment/kustomization.yaml
+        cat <<EOF >>deployment/kustomization.yaml
+        replicas:
+        - name: $DEPLOYMENT_NAME
+          count: 2
+        EOF
+        ./kustomize build deployment
+        ./kustomize build deployment | kubectl apply -f -
+        kubectl get services -o wide

@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "tpv-frontend"
+  namespace: "development"
+  labels:
+    app: "tpv-frontend"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "tpv-frontend"
+  template:
+    metadata:
+      labels:
+        app: "tpv-frontend"
+    spec:
+      containers:
+      - name: "kc-ci-frontend-sha256-1"
+        image: "eu.gcr.io/bngo-app/tpv-frontend"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "tpv-frontend-hpa-vg94"
+  namespace: "development"
+  labels:
+    app: "tpv-frontend"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "tpv-frontend"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
