@@ -118,6 +118,7 @@ jobs:
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         cd deployment && ../kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA} && cd ..
+        ls
         cat deployment/kustomization.yaml
         cat <<EOF >>deployment/kustomization.yaml
         replicas:
