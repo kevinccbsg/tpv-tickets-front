@@ -118,9 +118,8 @@ jobs:
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         cd deployment && ../kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA} && cd ..
-        ls deployment
-        cat deployment/kustomization.yaml
-        cat <<EOF >>deployment/kustomization.yaml
+        cat deployment/kustomization.yml
+        cat <<EOF >>deployment/kustomization.yml
         replicas:
         - name: $DEPLOYMENT_NAME
           count: 2
