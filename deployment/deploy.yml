@@ -19,6 +19,12 @@ spec:
       containers:
       - name: "tpv-frontend-sha256-1"
         image: "eu.gcr.io/bngo-app/tpv-frontend"
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 5
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
