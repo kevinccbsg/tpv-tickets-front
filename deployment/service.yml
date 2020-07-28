@@ -1,0 +1,17 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "tpv-frontend-service"
+  namespace: "development"
+  labels:
+    app: "tpv-frontend"
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 3000
+  selector:
+    app: "tpv-frontend"
+  type: "LoadBalancer"
+  loadBalancerIP: ""

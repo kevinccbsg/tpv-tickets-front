@@ -106,6 +106,13 @@ jobs:
       run: |
         docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
 
+    # Get secrets from vault
+    - id: secrets
+      uses: GoogleCloudPlatform/github-actions/get-secretmanager-secrets@master
+      with:
+        secrets: |-
+          apiUrl:${{ secrets.GKE_PROJECT }}/DEV_API_URL
+
     # Set up kustomize
     - name: Set up Kustomize
       run: |
@@ -124,6 +131,11 @@ jobs:
         - name: $DEPLOYMENT_NAME
           count: 2
         EOF
-        ./kustomize build deployment
+        cat <<EOF >>deployment/kustomization.yml
+        secretGenerator:
+        - name: tpv-frontend-secret
+          literals:
+          - API_URL=${{ steps.secrets.outputs.apiUrl }}
+        EOF
         ./kustomize build deployment | kubectl apply -f -
         kubectl get services -o wide
