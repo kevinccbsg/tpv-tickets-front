@@ -133,6 +133,9 @@ jobs:
           count: 2
         EOF
         cat <<EOF >>deployment/kustomization.yml
+        namespace: development
+        EOF
+        cat <<EOF >>deployment/kustomization.yml
         secretGenerator:
         - name: tpv-frontend-secret
           literals:
