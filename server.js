@@ -13,6 +13,13 @@ app.use(compression());
 
 app.use(express.static('dist'));
 app.use('/storybook', express.static(join(__dirname, 'static-storybook')));
+
+app.get('/config', (req, res) => {
+  res.json({
+    apiURL: process.env.API_URL,
+  });
+});
+
 app.get('/*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
