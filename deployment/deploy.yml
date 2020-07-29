@@ -26,11 +26,6 @@ spec:
             secretKeyRef:
               key: API_URL
               name: tpv-frontend-secret
-        livenessProbe:
-          httpGet:
-            path: /
-            port: http
-          initialDelaySeconds: 5
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
