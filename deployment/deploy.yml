@@ -1,4 +1,3 @@
----
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
@@ -26,23 +25,3 @@ spec:
             secretKeyRef:
               key: API_URL
               name: tpv-frontend-secret
----
-apiVersion: "autoscaling/v2beta1"
-kind: "HorizontalPodAutoscaler"
-metadata:
-  name: "tpv-frontend-hpa-vg94"
-  namespace: "development"
-  labels:
-    app: "tpv-frontend"
-spec:
-  scaleTargetRef:
-    kind: "Deployment"
-    name: "tpv-frontend"
-    apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: "Resource"
-    resource:
-      name: "cpu"
-      targetAverageUtilization: 80
