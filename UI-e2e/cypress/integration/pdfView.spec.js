@@ -2,11 +2,12 @@
 describe('PDF view', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('GET', '/config', 'fixture:config').as('getConfig');
     cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
     cy.visit('/');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
+    cy.wait(['@getConfig', '@loginRequest']);
     cy.get('[data-cy=Pdf-select]').click();
   });
 
@@ -43,7 +44,7 @@ describe('PDF view', () => {
     cy.get('[data-cy=select-pdf]').should('not.be.visible');
     cy.get('[data-cy=file-name]').should('be.visible');
     cy.get('[data-cy=btn-pdf-loader]').click();
-    cy.wait('@filePdf');
+    cy.wait(['@getConfig', '@filePdf']);
     cy.get('.notify .success').should('be.visible');
     cy.get('[data-cy=file-name]').should('not.be.visible');
     cy.get('[data-cy=select-pdf]').should('be.visible');

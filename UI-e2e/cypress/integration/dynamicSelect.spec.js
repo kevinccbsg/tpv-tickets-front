@@ -1,13 +1,14 @@
 describe('BkDynamicSelect', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('GET', '/config', 'fixture:config').as('getConfig');
     cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
     cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
     cy.visit('/');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
-    cy.wait('@getTicketsRequest');
+    cy.wait(['@getConfig', '@loginRequest']);
+    cy.wait(['@getConfig', '@getTicketsRequest']);
   });
 
   it('Should render the main screen when the Main tab is clicked', () => {

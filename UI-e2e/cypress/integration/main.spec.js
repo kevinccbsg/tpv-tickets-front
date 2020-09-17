@@ -1,13 +1,14 @@
 describe('Main view', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('GET', '/config', 'fixture:config').as('getConfig');
     cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
     cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
     cy.visit('/');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
-    cy.wait('@getTicketsRequest');
+    cy.wait(['@getConfig', '@loginRequest']);
+    cy.wait(['@getConfig', '@getTicketsRequest']);
   });
 
   it('Main view should content the navbar', () => {
@@ -56,7 +57,7 @@ describe('Main view', () => {
     cy.route('GET', '/api/v1/tickets', 'fixture:ticketsAfterRegister').as('getTicketsRequest');
     cy.get('[data-cy=main-date-input]').type('08-08-2020');
     cy.get('[data-cy=main-price-input]').type('2,12{enter}');
-    cy.wait(['@regsterTicket', '@getTicketsRequest']);
+    cy.wait(['@getConfig', '@regsterTicket', '@getTicketsRequest']);
   });
 
   it('Should show a modal and delete a ticket', () => {
@@ -66,7 +67,7 @@ describe('Main view', () => {
     cy.get('table > tbody > tr').should('have.length', TOTAL_ROWS);
     cy.get('[data-cy=deleteBtn-30]').click();
     cy.get('.deleteBtn').click();
-    cy.wait('@deletedTicket');
+    cy.wait(['@getConfig', '@deletedTicket']);
     cy.get('.notify .success').should('be.visible');
     cy.contains('Tickets sin pdf').click({ force: true });
     cy.get('table > tbody > tr').should('have.length', TOTAL_ROWS - 1);

@@ -1,6 +1,7 @@
 describe('Login view', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('GET', '/config', 'fixture:config').as('getConfig');
     cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
     cy.visit('/');
   });
@@ -20,7 +21,7 @@ describe('Login view', () => {
     cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
+    cy.wait(['@getConfig', '@loginRequest']);
     cy.url().should('be', '/');
   });
 });
